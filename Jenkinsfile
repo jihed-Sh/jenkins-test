@@ -33,17 +33,17 @@ pipeline {
                 }
             }
       }
-      stage('Deploy to Tomcat') {
-                  steps {
-                      script {
-                          sh '''
-                              WAR_FILE=$(ls target/*.war)
-                              curl -v -u '' -T $WAR_FILE http://localhost:5050/manager/text/deploy?path=/myapp
-                          '''
-                      }
-                  }
-              }
-
-
-    }
+//       stage('Deploy to Tomcat') {
+//                   steps {
+//                       script {
+//                           sh '''
+//                               WAR_FILE=$(ls target/*.war)
+//                               curl -v -u '' -T $WAR_FILE http://localhost:5050/manager/text/deploy?path=/myapp
+//                           '''
+//                       }
+//                   }
+//               }
+//
+//
+//     }
 }
