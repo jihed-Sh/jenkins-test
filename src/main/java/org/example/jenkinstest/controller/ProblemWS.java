@@ -24,6 +24,11 @@ public class ProblemWS {
         List<Problem> problemList= problemService.findAllProblems();
         return new ResponseEntity<>(problemList, HttpStatus.OK);
     }
+    @GetMapping("/test")
+    public String helloWorld(){
+        System.out.println("Hello Jenkins");
+        return "Hello Jenkins";
+    }
     @GetMapping("/find/{id}")
     public ResponseEntity<Problem> getProblemById(@PathVariable("id") Long id){
         Problem problem= problemService.findProblemById(id);
