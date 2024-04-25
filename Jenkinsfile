@@ -38,13 +38,13 @@ pipeline
                 }
             }
         }
-        stage('Trivy Scan')
-        {
-            steps
-                {
-                    sh "trivy fs --security-checks vuln,config /root/.jenkins/workspace/jenkins-test"
-                }
-        }
+//         stage('Trivy Scan')
+//         {
+//             steps
+//                 {
+//                     sh "trivy fs --security-checks vuln,config /root/.jenkins/workspace/jenkins-test"
+//                 }
+//         }
         stage('Build')
         {
             steps
@@ -52,30 +52,30 @@ pipeline
                     sh "mvn clean install"
                 }
         }
-//         stage('Build docker image')
-//         {
-//             steps
-//             {
-//                 script
-//                 {
-//                     sh 'docker build -t  theonlyjihed/jenkins-test .'
-//                 }
-//             }
-//         }
-//         stage('Push Docker Image to Docker Hub')
-//         {
-//             steps
-//             {
-//                 script
-//                  {
-//                     withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')])
-//                     {
-//                         sh "docker login -u $DOCKERHUB_USERNAME -p \$DOCKERHUB_PASSWORD"
-//                         // sh "docker tag jihed/jenkins-test jihed/jenkins-test:latest"
-//                         sh "docker push theonlyjihed/jenkins-test:latest"
-//                     }
-//                 }
-//             }
-//         }
+        stage('Build docker image')
+        {
+            steps
+            {
+                script
+                {
+                    sh 'docker build -t  theonlyjihed/jenkins-test .'
+                }
+            }
+        }
+        stage('Push Docker Image to Docker Hub')
+        {
+            steps
+            {
+                script
+                 {
+                    withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')])
+                    {
+                        sh "docker login -u $DOCKERHUB_USERNAME -p \$DOCKERHUB_PASSWORD"
+                        // sh "docker tag jihed/jenkins-test jihed/jenkins-test:latest"
+                        sh "docker push theonlyjihed/jenkins-test:latest"
+                    }
+                }
+            }
+        }
     }
 }
