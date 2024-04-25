@@ -29,10 +29,9 @@ pipeline
         {
             steps
             {
-                withSonarQubeEnv(credentialsId: 'sonar-token') {
-                  sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=jenkins-test \
-                  -Dsonar:java.binaries=.\
-                  -Dsonar.projectKey=jenkins-test '''
+                withSonarQubeEnv(credentialsId: 'sonar-token')
+                {
+                  sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=jenkins-test -Dsonar:java.binaries=. -Dsonar.projectKey=jenkins-test '''
                 }
             }
         }
