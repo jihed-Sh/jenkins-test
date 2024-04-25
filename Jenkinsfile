@@ -7,7 +7,7 @@ pipeline
     }
     environment
     {
-        SCANNER_HOME=tool 'sonar-scanner'
+        SCANNER_HOME= tool 'sonar-scanner'
     }
     stages
     {
@@ -29,10 +29,10 @@ pipeline
         {
             steps
             {
-                withSonarQubeEnv(credentialsId: 'sonar-token',installationName: 'sonar-scanner')
+                withSonarQubeEnv('sonar')
                 {
-//                   sh ' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=jenkins-test -Dsonar:java.binaries=. -Dsonar.projectKey=jenkins-test '
-                   sh 'mvn sonar:sonar'
+                    sh ' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=jenkins-test -Dsonar:java.binaries=. -Dsonar.projectKey=jenkins-test '
+//                    sh 'mvn sonar:sonar'
                 }
             }
         }
