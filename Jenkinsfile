@@ -29,9 +29,9 @@ pipeline
         {
             steps
             {
-                withSonarQubeEnv(credentialsId: 'sonar-token')
+                withSonarQubeEnv(credentialsId: 'sonar-token',installationName: 'sonar-scanner'))
                 {
-                  sh ' $SCANNER_HOME/bin/sonar-scanner'
+                  sh ' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=jenkins-test -Dsonar:java.binaries=. -Dsonar.projectKey=jenkins-test '
                 }
             }
         }
