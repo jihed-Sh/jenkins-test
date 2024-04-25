@@ -38,6 +38,20 @@ pipeline
                 }
             }
         }
+        stage('Trivy Scan')
+        {
+            steps
+                {
+                    sh "trivy fs --security-checks vuln,config /root/.jenkins/workspace/jenkins-test"
+                }
+        }
+        stage('Build')
+        {
+            steps
+                {
+                    sh "mvn clean install"
+                }
+        }
 //         stage('Build docker image')
 //         {
 //             steps
