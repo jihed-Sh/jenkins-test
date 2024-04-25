@@ -31,9 +31,8 @@ pipeline
             {
                 withSonarQubeEnv('sonar-scanner')
                 {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                    -Dsonar.projectName=jenkins-test \
-                     -Dsonar:java.binaries=.\
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=jenkins-test \
+                     -Dsonar.java.binaries=.\
                        -Dsonar.projectKey=jenkins-test'''
 //                    sh 'mvn sonar:sonar'
                 }
