@@ -77,14 +77,21 @@ pipeline
                 }
             }
         }
-        stage('Deploying React.js container to Kubernetes')
+        stage('Deploying to Kubernetes')
         {
               steps
               {
+//                 script
+//                 {
+//                   kubernetesDeploy(configs: "deployment.yaml",
+//                                                  "service.yaml")
+//                 }
                 script
-                {
-                  kubernetesDeploy(configs: "deployment.yaml",
-                                                 "service.yaml")
+                 {
+                      sh "sed -i 's,TEST_IMAGE_NAME,theonlyjihed/jenkins-test,' deployment.yaml"
+                      sh "cat deployment.yaml"
+                      sh "kubectl --kubeconfig=/home/ec2-user/config get pods"
+                      sh "kubectl --kubeconfig=/home/ec2-user/config apply -f deployment.yaml"
                 }
               }
         }
