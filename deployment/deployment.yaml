@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment #The name of the Kubernetes
+  #Deployment to be created in the Kubernetes cluster
+  labels:
+    app: jenkins-test
+spec:
+  replicas: 2 #The number of pods to be created in the
+  #Kubernetes cluster for the React.js application container
+  selector:
+    matchLabels:
+      app: jenkins-test
+  template:
+    metadata:
+      labels:
+        app: jenkins-test
+    spec:
+      containers:
+        - name: jenkins-test #The name of the react.js application container
+          #The Docker image for building the React.js application container
+          image: theonlyjihed/jenkins-test:latest
+          ports:
+            - containerPort: 8080 #The port for the React.js application container
