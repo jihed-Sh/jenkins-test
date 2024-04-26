@@ -86,8 +86,8 @@ pipeline
                   //sh 'kubectl delete -f dep/app-dep.yaml'
                   //sh 'kubectl delete -f dep/app-dep.yaml'
                   //sh 'kubectl delete -f dep/mongo-demo-db-config.yaml'
-                  sh 'kubectl apply -f deployment/deployment.yaml'
-                  sh 'kubectl apply -f deployment/service.yaml'
+                  sh 'minikube kubectl apply -f deployment/deployment.yaml'
+                  sh 'minikube kubectl apply -f deployment/service.yaml'
 
 //                 script
 //                 {
