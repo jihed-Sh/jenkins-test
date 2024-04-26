@@ -89,22 +89,22 @@ pipeline
                                     }
                             }
         }
-        stage('Deploying to Kubernetes')
-        {
-              steps
-              {
-                 sh 'minikube image load theonlyjihed/jenkins-test:latest'
-                 // Apply your Kubernetes deployment and service manifests
-                 sh 'kubectl apply -f deployment/deployment.yaml'
-                 sh 'kubectl apply -f deployment/service.yaml'
-
-//                 script
-//                 {
-//                   kubernetesDeploy(configs: "deployment.yaml",
-//                                                  "service.yaml")
-//                 }
-
-              }
-        }
+//         stage('Deploying to Kubernetes')
+//         {
+//               steps
+//               {
+//                  sh 'minikube image load theonlyjihed/jenkins-test:latest'
+//                  // Apply your Kubernetes deployment and service manifests
+//                  sh 'kubectl apply -f deployment/deployment.yaml'
+//                  sh 'kubectl apply -f deployment/service.yaml'
+//
+// //                 script
+// //                 {
+// //                   kubernetesDeploy(configs: "deployment.yaml",
+// //                                                  "service.yaml")
+// //                 }
+//
+//               }
+//         }
     }
 }

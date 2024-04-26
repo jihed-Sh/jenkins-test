@@ -21,4 +21,4 @@ spec:
           #The Docker image for building the React.js application container
           image: theonlyjihed/jenkins-test:latest
           ports:
-            - containerPort: 8080 #The port for the React.js application container
+            - containerPort: 3000 #The port for the React.js application container
