@@ -77,6 +77,18 @@ pipeline
                 }
             }
         }
+         stage('Pull image for deployment')
+         {
+                            steps
+                             {
+
+                                withCredentials([usernamePassword(credentialsId: 'docker-cred',usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                                        sh "docker login -u $DOCKERHUB_USERNAME -p \$DOCKERHUB_PASSWORD"
+                                        // sh "docker tag jihed/jenkins-test jihed/jenkins-test:latest"
+                                        sh "docker pull theonlyjihed/jenkins-test:latest"
+                                    }
+                            }
+        }
         stage('Deploying to Kubernetes')
         {
               steps
