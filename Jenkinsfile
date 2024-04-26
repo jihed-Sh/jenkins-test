@@ -89,7 +89,7 @@ pipeline
                 script
                  {
                       sh "sed -i 's,TEST_IMAGE_NAME,theonlyjihed/jenkins-test,' deployment/deployment.yaml"
-                      sh "cat deployment.yaml"
+                      sh "cat deployment/deployment.yaml"
                       sh "kubectl --kubeconfig=/home/ec2-user/config get pods"
                       sh "kubectl --kubeconfig=/home/ec2-user/config apply -f deployment/deployment.yaml"
                 }
