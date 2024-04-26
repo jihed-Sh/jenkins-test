@@ -93,13 +93,10 @@ pipeline
         {
               steps
               {
-                 sh 'minikube cache add theonlyjihed/jenkins-test:latest'
-                  sh 'minikube cache reload'
-                  //sh 'kubectl delete -f dep/app-dep.yaml'
-                  //sh 'kubectl delete -f dep/app-dep.yaml'
-                  //sh 'kubectl delete -f dep/mongo-demo-db-config.yaml'
-                  sh 'minikube kubectl apply -f deployment/deployment.yaml'
-                  sh 'minikube kubectl apply -f deployment/service.yaml'
+                 sh 'minikube image load theonlyjihed/jenkins-test:latest'
+                 // Apply your Kubernetes deployment and service manifests
+                 sh 'kubectl apply -f deployment/deployment.yaml'
+                 sh 'kubectl apply -f deployment/service.yaml'
 
 //                 script
 //                 {
